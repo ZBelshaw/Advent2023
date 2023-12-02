@@ -40,8 +40,7 @@ def aoc1_2():
     cnt = 0
     for onerow in records:
         r = [x for x in onerow if x.isnumeric()]
-        s = int(r[0] + r[-1])
-        cnt += s
+        cnt += int(r[0] + r[-1])
     return cnt
 
 
