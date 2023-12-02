@@ -1,5 +1,5 @@
-
-fileloc = "C:/Users/zbels/Documents2/"
+from common import ingest
+fileloc = "C:/aoc2023"
 
 mapping = {"one":"o1e",
             "two":"t2o",
@@ -12,11 +12,6 @@ mapping = {"one":"o1e",
             "nine":"ni9ne"
             }
 
-
-def ingest(*args):
-    with open(file="{}/{}".format(*args)) as f:
-        contents = f.readlines()
-    return [x.strip() for x in contents]
 
 
 def substitute(map:dict, string:str):
