@@ -5,6 +5,7 @@ fileloc = "C:/aoc2023"
 # then also parse over it and build a list of numbers and their locations?
 # then maybe just need to find the intersections of these 2 sets? (with symbols inflated to be -1,+1 in both dimensions)
 
+
 class coord:
     def __init__(self, x:int, y:int):
         self.x = x
@@ -37,6 +38,7 @@ class coord:
     def isAdjacent(self, other):
         return other in self.adjacent()
 
+
 # as a number can be over multiple locations
 # return a tuple ([symbol indices], [number indices, the number])
 def scanString(string:str, symChar:str=" "):
@@ -53,6 +55,7 @@ def scanString(string:str, symChar:str=" "):
     else:
         numbers = mergeNumbers(numbers)
     return symbols, numbers
+
 
 # take the list of tuples [(index, number) ...] and merge together continuous items
 def mergeNumbers(x:list):
@@ -91,6 +94,7 @@ def aoc3_1():
             cnt += n
     return cnt
 
+
 def aoc3_2():
     records = ingest(fileloc, "AOC3.txt")
     symbol_locations = []
@@ -105,10 +109,6 @@ def aoc3_2():
         if 2 == len(adj_n):
             cnt += adj_n[0] * adj_n[1]
     return cnt
-
-#a = coord(5, 16)
-
-#[print(x) for x in a.adjacent()]
 
 fmt(aoc3_1())
 
