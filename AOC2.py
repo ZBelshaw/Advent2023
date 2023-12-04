@@ -44,6 +44,6 @@ def aoc2_2():
     return cnt
 
 
-fmt(aoc2_1(limit_1))
-
-fmt(aoc2_2())
+if __name__ == "__main__":
+    fmt(aoc2_1(limit_1))
+    fmt(aoc2_2())

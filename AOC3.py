@@ -1,43 +1,5 @@
-from common import ingest, fmt
+from common import ingest, fmt, coord
 fileloc = "C:/aoc2023"
-
-# hmmm how to do this ... maybe parse over a file and build a list of symbol locations first?
-# then also parse over it and build a list of numbers and their locations?
-# then maybe just need to find the intersections of these 2 sets? (with symbols inflated to be -1,+1 in both dimensions)
-
-
-class coord:
-    def __init__(self, x:int, y:int):
-        self.x = x
-        self.y = y
-
-    def __eq__(self, other):
-        return self.x == other.x and self.y == other.y
-
-    def __hash__(self):
-        return hash((self.x, self.y))
-
-    def __str__(self):
-        return "({},{})".format(self.x, self.y)
-
-    def pos(self):
-        return self.x, self.y
-
-    def translate(self, x:int=0, y:int=0):
-        return self.x + x, self.y + y
-
-    def adjacent(self):
-        all = [[coord(self.x + x, self.y + y) for y in [-1,0,1]] for x in [-1,0,1]]
-        track = []
-        for x in all:
-            for y in x:
-                if self != y:
-                    track.append(y)
-        return set(track)
-
-    def isAdjacent(self, other):
-        return other in self.adjacent()
-
 
 # as a number can be over multiple locations
 # return a tuple ([symbol indices], [number indices, the number])
@@ -110,6 +72,7 @@ def aoc3_2():
             cnt += adj_n[0] * adj_n[1]
     return cnt
 
-fmt(aoc3_1())
 
-fmt(aoc3_2())
+if __name__ == "__main__":
+    fmt(aoc3_1())
+    fmt(aoc3_2())
