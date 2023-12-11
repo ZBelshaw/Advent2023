@@ -26,8 +26,9 @@ class coord:
     def pos(self):
         return self.x, self.y
 
-    def translate(self, x:int=0, y:int=0):
-        return self.x + x, self.y + y
+    def translate(self, x=0, y=0, c=(0, 0)):
+        """return the coord that is x, y, c away from this position"""
+        return self.x + x + c[0], self.y + y + c[1]
 
     def adjacent(self):
         all = [[coord(self.x + x, self.y + y) for y in [-1,0,1]] for x in [-1,0,1]]
@@ -38,5 +39,13 @@ class coord:
                     track.append(y)
         return set(track)
 
+    # return those cells which are cardinally adjacent to this one
+    def cardinallyAdjacent(self):
+        return set([[coord(self.x + x, self.y + y) for x in [-1, 1]] for y in [-1, 1]])
+
     def isAdjacent(self, other):
         return other in self.adjacent()
+
+    # return the translation to take self -> other
+    def difference(self, other):
+        return other.x - self.x, other.y - self.y
